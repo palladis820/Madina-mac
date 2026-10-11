@@ -97,6 +97,14 @@ td:first-child{font-weight:600;white-space:nowrap}
 .cands a{font:500 13px/1 var(--mono)}
 .cands p{font-size:14.5px;color:var(--muted)}
 .refnote{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:16px;display:flex;flex-direction:column;gap:6px}
+.refs{display:flex;flex-direction:column;gap:24px}
+.ref{margin:0;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:24px;align-items:start}
+.ref img{width:100%;height:auto;display:block;border-radius:4px;border:1px solid var(--line)}
+.ref figcaption{display:flex;flex-direction:column;gap:10px;min-width:0}
+.ref h3{font:600 22px/1.2 var(--display)}
+.ref p{font-size:16px}
+.ref-tags{display:flex;flex-wrap:wrap;gap:6px}
+.ref-tags span{font:500 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:6px 8px;border-radius:99px;background:var(--brass-soft);color:var(--brass)}
 .loop{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:14.5px}
 .loop span{padding:8px 12px;background:var(--accent-soft);color:var(--accent);border-radius:4px;font-weight:500}
 .loop i{font-style:normal;color:var(--muted)}
@@ -108,6 +116,7 @@ footer{font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:
   .swatches{grid-template-columns:repeat(3,1fr)}
   .cols.cols-2{grid-template-columns:1fr}
   .cands{grid-template-columns:1fr}
+  .ref{grid-template-columns:1fr;gap:14px}
   .facts{grid-template-columns:1fr}
   .tl{grid-template-columns:1fr;gap:2px}
   .acc{grid-template-columns:32px 1fr;gap:10px}
@@ -178,6 +187,18 @@ footer{font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:
 <section id="p1">
   <div class="sec-head"><span class="num">01</span><h2>Визуальное видение страницы</h2><em class="pill p-you">в работе</em></div>
   <p>8–12 референсов того, какой я вижу страницу Хаоса. К каждому пишу, что именно мне в нём нравится: цвет, композиция, свет, подача людей. Сетка ниже помогает охватить разные стороны ленты, а не собрать десять похожих интерьеров.</p>
+  <div class="refs">
+    <figure class="ref">
+      <img src="img/ref-01-neon.jpg" alt="Неоновая вывеска «Ja sam u Haosu» на стене с геометрическим муралом в шалфейных, кирпичных и горчичных тонах" loading="lazy">
+      <figcaption>
+        <span class="label">Референс 01 · Artklasa</span>
+        <h3>Неон «Ja sam u Haosu»</h3>
+        <p>Здесь меня вдохновил сам знак. С одной стороны, пастельные тона фона, с другой, неоновая вывеска. Это сочетание можно перенести на оформление страницы и на наше лого: «хаос» с одной стороны, порядок и комфорт с другой.</p>
+        <div class="ref-tags"><span>Цвет</span><span>Контраст</span><span>Лого</span></div>
+      </figcaption>
+    </figure>
+  </div>
+  <h3>Что ещё хочу охватить</h3>
   <div class="slots">
     <div class="slot"><b>Портрет резидента</b><span>Как снимать людей: крупно, в работе, естественный свет</span></div>
     <div class="slot"><b>Деталь пространства</b><span>Фактура, предмет, свет из окна</span></div>
