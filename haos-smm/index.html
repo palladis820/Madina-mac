@@ -6,17 +6,17 @@
 /* Layout: одна колонка-досье, разделы как вкладки папки; статус каждого пункта виден сразу */
 :root{
   --bg:#EDEFEA; --surface:#F7F8F5; --fg:#151915; --muted:#5B635C; --line:#CDD3CB;
-  --accent:#1F4D3A; --accent-soft:#DCE7DF; --brass:#8A6A2C; --brass-soft:#EFE6D2;
+  --accent:#2F6150; --accent-soft:#DCE9E2; --brass:#B4583A; --brass-soft:#F5E1D8;
   --display:"Unbounded","Arial Black",system-ui,sans-serif;
   --body:"Golos Text",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#111412; --surface:#181C19; --fg:#E7EBE6; --muted:#9AA39B; --line:#2C332E;
-  --accent:#7FC2A1; --accent-soft:#1D3127; --brass:#D2B36E; --brass-soft:#2E2817; color-scheme:dark}}
+  --accent:#8CCBB0; --accent-soft:#1D3129; --brass:#EC9A79; --brass-soft:#35221A; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#111412; --surface:#181C19; --fg:#E7EBE6; --muted:#9AA39B; --line:#2C332E;
-  --accent:#7FC2A1; --accent-soft:#1D3127; --brass:#D2B36E; --brass-soft:#2E2817; color-scheme:dark}
+  --accent:#8CCBB0; --accent-soft:#1D3129; --brass:#EC9A79; --brass-soft:#35221A; color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--fg);font:16px/1.6 var(--body);padding:40px 20px 80px}
 .wrap{max-width:920px;margin:0 auto;display:flex;flex-direction:column;gap:56px}
@@ -84,6 +84,12 @@ td:first-child{font-weight:600;white-space:nowrap}
 .cols div{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:16px;display:flex;flex-direction:column;gap:8px;min-width:0}
 .cols p,.cols li{font-size:14.5px}
 .cols ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
+.cols.cols-2{grid-template-columns:repeat(2,1fr)}
+.swatches{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.swatches div{display:flex;flex-direction:column;gap:4px;min-width:0}
+.swatches i{display:block;aspect-ratio:1;max-width:100%;border-radius:50%;border:1px solid var(--line)}
+.swatches b{font-size:13.5px}
+.swatches span{font-size:12.5px;color:var(--muted);line-height:1.35}
 .loop{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:14.5px}
 .loop span{padding:8px 12px;background:var(--accent-soft);color:var(--accent);border-radius:4px;font-weight:500}
 .loop i{font-style:normal;color:var(--muted)}
@@ -92,6 +98,8 @@ footer{font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:
   .status{grid-template-columns:repeat(2,1fr)}
   .principles,.cols{grid-template-columns:1fr}
   .slots{grid-template-columns:repeat(2,1fr)}
+  .swatches{grid-template-columns:repeat(3,1fr)}
+  .cols.cols-2{grid-template-columns:1fr}
   .facts{grid-template-columns:1fr}
   .tl{grid-template-columns:1fr;gap:2px}
   .acc{grid-template-columns:32px 1fr;gap:10px}
@@ -115,17 +123,47 @@ footer{font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:
 <section id="context">
   <div class="sec-head"><span class="num">00</span><h2>С чем работаем</h2></div>
   <div class="facts">
-    <div><span class="label">Формат</span><p>Коворкинг по приглашению для tech, стартап и креативной индустрии. В открытых источниках называется первым invite-only коворкингом в Сербии.</p></div>
-    <div><span class="label">Место</span><p>Центр Белграда, Теразие, рядом с отелем «Москва». Окна на парк Теразийская терраса.</p></div>
-    <div><span class="label">Пространство</span><p>Лаунж, открытые рабочие зоны, две переговорные, кофейня на ресепшене.</p></div>
+    <div><span class="label">Формат</span><p>«The Only Community Space You’ll Ever Need». Первый invite-only коворкинг для стартапов в Белграде: стартапы, предприниматели, креативные люди.</p></div>
+    <div><span class="label">Две локации</span><p><b>Теразие</b>: центр, рядом с отелем «Москва», большие окна на парк. <b>Artklasa</b>: новое пространство у Дуная, в культурном центре Silosi. Ресторан, specialty-кофе, терраса, телефонные будки.</p></div>
+    <div><span class="label">Instagram</span><p>@haos.space · 5 315 подписчиков. Хайлайты: Market, Find Artklasa, Events, Special Offers, Private Office, Breakfasts.</p></div>
     <div><span class="label">Позиционирование из брифа</span><p>Сначала комьюнити, потом рабочее место. Эксклюзивность без пафоса, luxury без высокомерия.</p></div>
   </div>
-  <p class="note">Сайт и инстаграм Хаоса из моей среды не открываются, поэтому факты выше взяты из открытых каталогов и архитектурных публикаций. Если пришлёшь скриншоты сайта и ленты, добавлю раздел «как сейчас» и сравнение «как могло бы быть».</p>
+
   <h3>Что позиционирование значит для визуала (гипотеза)</h3>
   <div class="principles">
     <div><h3>Люди, а не интерьер</h3><p>Комьюнити продаётся лицами и разговорами. Живые кадры, не постановочные улыбки в камеру.</p></div>
     <div><h3>Тихая роскошь</h3><p>Свет, фактуры, детали: чашка, книга, вид на парк. Без золота, неона и слова «премиум».</p></div>
-    <div><h3>Немного хаоса</h3><p>Название даёт право на дерзость: смелая типографика, кадры «вне сетки», юмор в подписях.</p></div>
+    <div><h3>Немного хаоса</h3><p>Название даёт право на дерзость: смелая типографика, кадры «вне сетки», юмор в подписях. Неоновая надпись «Ja sam u Haosu» уже готовый фирменный символ.</p></div>
+  </div>
+</section>
+
+<section id="now">
+  <div class="sec-head"><span class="num">00</span><h2>Как сейчас: сайт и лента</h2></div>
+  <p>По скриншотам сайта и профиля. У бренда уже есть сильная база, её стоит собрать в систему, а не придумывать заново.</p>
+  <h3>Палитра, которая уже есть</h3>
+  <div class="swatches">
+    <div><i style="background:#E48B69"></i><b>Терракота</b><span>кнопки сайта, хайлайты</span></div>
+    <div><i style="background:#3E7660"></i><b>Глубокий зелёный</b><span>плашки сайта, бархат диванов</span></div>
+    <div><i style="background:#C6E4D8"></i><b>Мята</b><span>аватар, логотип</span></div>
+    <div><i style="background:#ECBD5B"></i><b>Горчица</b><span>хайлайты Market, Events</span></div>
+    <div><i style="background:#A44D35"></i><b>Кирпич</b><span>Special Offers, Breakfasts, обложки</span></div>
+    <div><i style="background:#3F4949"></i><b>Графит</b><span>шапка сайта</span></div>
+  </div>
+  <p class="note">Тёплая земляная гамма с зелёным и мятой выглядит цельно и совпадает с интерьером: терракотовые диваны, оранжевые кресла, бархат, растения. Это и есть «luxury без высокомерия» в цвете.</p>
+  <div class="cols cols-2">
+    <div><span class="label">Что работает</span><ul>
+      <li>Узнаваемый линейный логотип-монограмма</li>
+      <li>Интерьеры очень фотогеничные: мурал с ромбами и неон «Ja sam u Haosu» в Artklasa, вид на парк и честерфилд на Теразие</li>
+      <li>Хайлайты в цветах бренда, понятная навигация по услугам</li>
+      <li>Рубрика завтраков уже есть, её легко развивать</li>
+    </ul></div>
+    <div><span class="label">Где можно лучше</span><ul>
+      <li>В ленте мало людей: в основном графика и интерьеры, а Хаос продаёт комьюнити</li>
+      <li>Афиши ивентов в чужом стиле (фиолетовый воркшоп с 3D) выбиваются из палитры</li>
+      <li>Нет одного шаблона анонсов и обложек Reels, поэтому сетка выглядит пёстро</li>
+      <li>Безымянный фиолетовый хайлайт ломает систему цветов</li>
+      <li>Две локации с разным характером пока не разведены визуально</li>
+    </ul></div>
   </div>
 </section>
 
