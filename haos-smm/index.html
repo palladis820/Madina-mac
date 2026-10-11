@@ -108,6 +108,9 @@ td:first-child{font-weight:600;white-space:nowrap}
 .ref h3{font:600 22px/1.2 var(--display)}
 .ref p{font-size:16px}
 .ref-wide{grid-template-columns:1fr;gap:16px}
+.ref-chips{display:grid;grid-template-columns:repeat(4,1fr);gap:10px 8px}
+.ref-chips span{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--muted);line-height:1.25;min-width:0}
+.ref-chips i{display:block;height:34px;border-radius:3px;border:1px solid var(--line)}
 .ref-tags{display:flex;flex-wrap:wrap;gap:6px}
 .ref-tags span{font:500 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:6px 8px;border-radius:99px;background:var(--brass-soft);color:var(--brass)}
 .loop{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:14.5px}
@@ -230,6 +233,16 @@ footer{font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:
         <h3>Больше цвета на обложках</h3>
         <p>Этот референс не про шрифт и не про сам дизайн. Я добавила его, чтобы показать, что на наши обложки можно добавить немного больше цвета и интересных решений.</p>
         <div class="ref-tags"><span>Цвет</span><span>Обложки</span><span>Анонсы</span></div>
+      </figcaption>
+    </figure>
+    <figure class="ref">
+      <img src="img/ref-05-palette.jpg" alt="Коллаж из квадратных цветочных иллюстраций в стиле изразцов: винные, оранжевые, охристые, розовые, оливковые, бирюзовые и индиго цвета на кремовом фоне" loading="lazy">
+      <figcaption>
+        <span class="label">Референс 05 · палитра</span>
+        <h3>Наша палитра, но с характером</h3>
+        <p>Палитра для ленты, особенно для объявлений и графики. Это примерно наша палитра, но в ней больше цвета, а значит, и больше характера.</p>
+        <div class="ref-chips" aria-label="Цвета из референса"><span><i style="background:#F3E6C8"></i>Крем</span><span><i style="background:#EE8A86"></i>Розовый</span><span><i style="background:#D9622F"></i>Жжёный оранжевый</span><span><i style="background:#C99A3E"></i>Охра</span><span><i style="background:#9A231F"></i>Винный</span><span><i style="background:#6B6A2E"></i>Оливковый</span><span><i style="background:#4FA39A"></i>Бирюза</span><span><i style="background:#23356B"></i>Индиго</span></div>
+        <div class="ref-tags"><span>Цвет</span><span>Графика</span><span>Объявления</span></div>
       </figcaption>
     </figure>
   </div>
