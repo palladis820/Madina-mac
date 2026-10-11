@@ -66,7 +66,9 @@ section{display:flex;flex-direction:column;gap:20px;padding-top:28px;border-top:
 .tag{font:500 10.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .acc p{font-size:15.5px}
 .acc .for{color:var(--accent);font-size:15px}
-.acc .for::before{content:"Для Хаоса → ";font-weight:600}
+.acc .for::before{content:"Идея для Хаоса → ";font-weight:600}
+.acc .post{font:500 13px/1 var(--mono);align-self:flex-start}
+.acc-empty .n,.acc-empty p{color:var(--muted)}
 .note{font-size:14px;color:var(--muted);border-left:2px solid var(--brass);padding-left:12px}
 .timeline{display:flex;flex-direction:column;border-left:2px solid var(--line);margin-left:6px}
 .tl{display:grid;grid-template-columns:110px 1fr;gap:12px;padding:10px 0 10px 18px;position:relative}
@@ -116,10 +118,10 @@ footer{font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:
 <header>
   <span class="label">HAOS · Белград · тестовое задание SMM</span>
   <h1>Хаос: визуал, референсы, аналитика</h1>
-  <p class="lead">Рабочая папка по тестовому. Каждый пункт разложен отдельно; статус у каждого виден сверху. Страница будет обновляться по мере того, как появляются материалы.</p>
+  <p class="lead">Мой разбор тестового задания на позицию SMM-менеджера Haos. Каждый пункт разложен отдельно, статус виден сверху.</p>
   <nav class="status" aria-label="Статус пунктов">
-    <a href="#p1"><b>1</b><span>Визуальное видение</span><em class="pill p-you">материал от тебя</em></a>
-    <a href="#p2"><b>2</b><span>Топ-10 аккаунтов</span><em class="pill p-you">4 из 10</em></a>
+    <a href="#p1"><b>1</b><span>Визуальное видение</span><em class="pill p-you">в работе</em></a>
+    <a href="#p2"><b>2</b><span>Топ-10 аккаунтов</span><em class="pill p-you">8 из 10</em></a>
     <a href="#p3"><b>3</b><span>Контент-план</span><em class="pill p-later">позже</em></a>
     <a href="#p4"><b>4</b><span>Создание контента</span><em class="pill p-skip">пропускаем</em></a>
     <a href="#p5"><b>5</b><span>Аналитика</span><em class="pill p-work">набросок</em></a>
@@ -174,8 +176,8 @@ footer{font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:
 </section>
 
 <section id="p1">
-  <div class="sec-head"><span class="num">01</span><h2>Визуальное видение страницы</h2><em class="pill p-you">материал от тебя</em></div>
-  <p>Нужно 8–12 референсов с коротким комментарием по сути: цвет, композиция, свет, подача людей. Ты собираешь и присылаешь картинки с парой слов, я оформляю сюда. Ниже сетка-заготовка, чтобы подборка покрыла разные стороны ленты, а не десять похожих интерьеров.</p>
+  <div class="sec-head"><span class="num">01</span><h2>Визуальное видение страницы</h2><em class="pill p-you">в работе</em></div>
+  <p>8–12 референсов того, какой я вижу страницу Хаоса. К каждому пишу, что именно мне в нём нравится: цвет, композиция, свет, подача людей. Сетка ниже помогает охватить разные стороны ленты, а не собрать десять похожих интерьеров.</p>
   <div class="slots">
     <div class="slot"><b>Портрет резидента</b><span>Как снимать людей: крупно, в работе, естественный свет</span></div>
     <div class="slot"><b>Деталь пространства</b><span>Фактура, предмет, свет из окна</span></div>
@@ -190,7 +192,7 @@ footer{font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:
     <div class="slot"><b>Еда и завтраки</b><span>Для рубрики «завтраки по средам»</span></div>
     <div class="slot"><b>AI-визуал</b><span>Если будешь генерировать (Midjourney и т. п.)</span></div>
   </div>
-  <div class="refnote"><span class="label">Наблюдение из профиля</span><h3>Fotografiska · <a href="https://www.instagram.com/fotografiska/">@fotografiska</a></h3><p>Цветовая гамма ленты меняется со временем. Хаосу можно взять это на заметку: менять акцентный цвет по периодам. Вопрос, какой выбрать период: месяц или сезон.</p></div>
+  <div class="refnote"><span class="label">Наблюдение из профиля</span><h3>Fotografiska · <a href="https://www.instagram.com/fotografiska/">@fotografiska</a></h3><p>Если пролистать их профиль, видно, что цветовая гамма со временем меняется. Нам тоже стоит взять это на заметку. Вопрос только в том, какой период выбрать для смены гаммы: месяц или, например, сезон.</p></div>
   <h3>По чему комментировать каждый референс</h3>
   <div class="checklist">
     <span>Цвет и обработка</span><span>Свет</span><span>Композиция и кадрирование</span><span>Как поданы люди</span><span>Шрифт и текст на фото</span><span>Ритм в сетке</span><span>Что именно взять для Хаоса</span>
@@ -204,42 +206,56 @@ neutral feed instagram grid · editorial carousel design</pre>
 </section>
 
 <section id="p2">
-  <div class="sec-head"><span class="num">02</span><h2>Топ-10 аккаунтов для вдохновения</h2><em class="pill p-you">4 из 10 отобраны</em></div>
-  <p>Ищем аккаунты, на которые Хаос ещё не подписан, и берём у них новые идеи, а не то, что у нас уже есть. Комментарии к отобранным написаны по твоему разбору профилей.</p>
+  <div class="sec-head"><span class="num">02</span><h2>Топ-10 аккаунтов для вдохновения</h2><em class="pill p-you">8 из 10</em></div>
+  <p>Я искала аккаунты, на которые Хаос ещё не подписан, чтобы найти новые идеи, а не повторять то, что у нас уже есть. Для каждого пишу, что меня зацепило и как это можно применить у нас.</p>
   <ol class="accounts">
     <li class="acc"><span class="n">1</span><div class="acc-body">
       <div class="acc-top"><h3>Factory Berlin</h3><a href="https://www.instagram.com/factoryberlin/">@factoryberlin</a><span class="tag">tech-комьюнити · Берлин</span></div>
-      <p>Анонсы мероприятий делают не на однотонном фоне, а с картинкой. Такой анонс гораздо сильнее цепляет глаз в ленте.</p>
-      <p class="for">Уходим от плашек с текстом на ровном фоне: в основе анонса фото или иллюстрация, текст поверх.</p>
+      <p>Мне понравилось, что анонс мероприятия у них делается не на однотонном фоне, а с картинкой. Мне кажется, так он гораздо сильнее цепляет глаз.</p>
+      <p class="for">Делать анонсы на фото или иллюстрации, а не на плашке одного цвета.</p>
     </div></li>
     <li class="acc"><span class="n">2</span><div class="acc-body">
       <div class="acc-top"><h3>Station F</h3><a href="https://www.instagram.com/joinstationf/">@joinstationf</a><span class="tag">стартап-кампус · Париж</span></div>
-      <p>Публикуют календарь событий отдельным постом.</p>
-      <p class="for">Сетка ивентов в отдельной вкладке актуального. Она сразу показывает, что у нас идёт жизнь, то есть комьюнити. Второй вариант: календарь постом, чтобы история всех ивентов оставалась в ленте профиля и не перегружала актуальные.</p>
+      <p>У них календарь событий выходит отдельным постом.</p>
+      <p class="for">Сделать отдельную вкладку в актуальных с сеткой ивентов. Она как раз покажет комьюнити-составляющую. Если не хочется перегружать актуальные, можно делать это постом, чтобы история всех ивентов оставалась в ленте профиля.</p>
+      <a class="post" href="https://www.instagram.com/p/Ddt9d3ICkQ1/">Смотреть пост →</a>
     </div></li>
     <li class="acc"><span class="n">3</span><div class="acc-body">
       <div class="acc-top"><h3>Slush</h3><a href="https://www.instagram.com/slushhq/">@slushhq</a><span class="tag">стартап-конференция · Хельсинки</span></div>
-      <p>Вкладка актуального с BTS: закулисье и живые кадры с событий.</p>
-      <p class="for">Своя BTS-вкладка, куда собираем всё, что наснимали мы и участники. Сейчас посты об ивентах есть, а пересмотреть прошедшее негде. Текущие «Events» в основном про наши вечеринки, их можно расширить на еженедельные события.</p>
+      <p>Мне понравилась вкладка в актуальных с BTS.</p>
+      <p class="for">Своя BTS-вкладка, куда можно скидывать весь материал с ивентов, который наснимали мы и участники. Это добавит странице жизни: сейчас посты с ивентами у нас есть, но негде посмотреть или пересмотреть то, что уже произошло. Текущая вкладка «Events» больше про наши локальные вечеринки, чем про еженедельные мероприятия, и её можно расширить.</p>
     </div></li>
     <li class="acc"><span class="n">4</span><div class="acc-body">
       <div class="acc-top"><h3>Ace Hotel</h3><a href="https://www.instagram.com/acehotel/">@acehotel</a><span class="tag">отель-комьюнити · США</span></div>
-      <p>Закреплённый пост: гайд по городу.</p>
-      <p class="for">Гайд по Белграду. Иностранных резидентов и гостей города всё больше, и они часто спрашивают у тебя и администраторов, что посмотреть и где поесть. Грань между рекомендацией и рекламой тонкая, поэтому рубрику логичнее вести в Telegram-канале.</p>
+      <p>Мне понравился их первый пост в закрепе: гайд по городу.</p>
+      <p class="for">Гайд по Белграду. В последнее время к нам приходит много иностранных резидентов и гостей города, и они часто спрашивают у меня и у администраторов, что посмотреть, какие есть интересные места и где поесть. Грань между нашей рекомендацией и рекламой здесь тонкая, поэтому эту рубрику можно перенести в Telegram-канал.</p>
+      <a class="post" href="https://www.instagram.com/p/DZFpj62jWoQ/">Смотреть пост →</a>
     </div></li>
+    <li class="acc"><span class="n">5</span><div class="acc-body">
+      <div class="acc-top"><h3>Fabrika Tbilisi</h3><a href="https://www.instagram.com/fabrikatbilisi/">@fabrikatbilisi</a><span class="tag">хостел, коворкинг, арт-двор · Тбилиси</span></div>
+      <p>Мне понравилось, что три первых закреплённых поста визуально соединены в один блок.</p>
+      <p class="for">Оформить закреп так же: три поста, которые вместе читаются как одна картинка и сразу задают тон профилю.</p>
+    </div></li>
+    <li class="acc"><span class="n">6</span><div class="acc-body">
+      <div class="acc-top"><h3>The Trampery</h3><a href="https://www.instagram.com/thetrampery/">@thetrampery</a><span class="tag">творческие кампусы · Лондон</span></div>
+      <p>У них много контента с резидентами. Здесь у меня возникла идея скорее практическая, чем визуальная.</p>
+      <p class="for">Некоторые наши резиденты сами предлагали организовать воркшопы и активности в коворкинге. Я много говорю с людьми, и мне они рассказывают свои идеи, но подойти к кому-то из стаффа и предложить им бывает неловко. По моим наблюдениям, резиденты боятся отказа и не чувствуют нашей заинтересованности в них и в том, что они предлагают. Я считаю, это нужно менять: если у кого-то появляется идея, идти навстречу и давать сделать что-то не для широкой публики, как лекции и ивенты, а для резидентов. Это хороший способ в безопасной обстановке проверить, что работает, а что нет. А то, что сработает, потом можно расширять.</p>
+    </div></li>
+    <li class="acc"><span class="n">7</span><div class="acc-body">
+      <div class="acc-top"><h3>House of Beautiful Business</h3><a href="https://www.instagram.com/houseofbeautifulbusiness/">@houseofbeautifulbusiness</a><span class="tag">международное комьюнити</span></div>
+      <p>Мне понравилась их рубрика to-do list, чем-то похожая на бинго.</p>
+      <p class="for">Сделать свой список. Тут нужно решить, на чём фокусироваться: на активностях внутри Хаоса, за выполнение которых резидент или гость с дневным пропуском получает что-то приятное, или на более широком формате про повседневную жизнь.</p>
+      <a class="post" href="https://www.instagram.com/p/Dbu7AOnCG_0/">Смотреть пост →</a>
+    </div></li>
+    <li class="acc"><span class="n">8</span><div class="acc-body">
+      <div class="acc-top"><h3>betahaus</h3><a href="https://www.instagram.com/betahaus/">@betahaus</a><span class="tag">коворкинг · Берлин</span></div>
+      <p>Мне понравилась идея с name tags.</p>
+      <p class="for">Каждый раз, когда мы делаем новые стикеры для Хаоса, устраивать конкурс среди резидентов. Идею, которая наберёт больше всех голосов (например, в голосовании в Telegram-канале), печатаем как стикер.</p>
+      <a class="post" href="https://www.instagram.com/p/DeHLKFyCtCG/">Смотреть пост →</a>
+    </div></li>
+    <li class="acc acc-empty"><span class="n">9</span><div class="acc-body"><p>В поиске</p></div></li>
+    <li class="acc acc-empty"><span class="n">10</span><div class="acc-body"><p>В поиске</p></div></li>
   </ol>
-
-  <h3>Кандидаты на оставшиеся 6 мест</h3>
-  <p class="note">Эти профили я открыть не могу, поэтому здесь не выводы, а наводки: что в них проверить. Что не подойдёт или уже есть в подписках Хаоса, вычёркиваем.</p>
-  <div class="cands">
-    <div><h3>CreativeMornings</h3><a href="https://www.instagram.com/creativemornings/">@creativemornings</a><p>Бесплатные утренние лекции за завтраком в 200+ городах, у каждого месяца общая тема. Проверить, как они оформляют тему месяца и спикера. Возможная связка с нашими завтраками по средам.</p></div>
-    <div><h3>Fabrika Tbilisi</h3><a href="https://www.instagram.com/fabrikatbilisi/">@fabrikatbilisi</a><p>Бывшая швейная фабрика: хостел, коворкинг, бары, стрит-арт и маркет во дворе. Похожая аудитория из релокантов и гостей города. Проверить, как они показывают людей и двор.</p></div>
-    <div><h3>The Trampery</h3><a href="https://www.instagram.com/thetrampery/">@thetrampery</a><p>Сеть творческих кампусов в Лондоне. Проверить, как разводят разные локации в одной ленте: у Хаоса их две.</p></div>
-    <div><h3>House of Beautiful Business</h3><a href="https://www.instagram.com/houseofbeautifulbusiness/">@houseofbeautifulbusiness</a><p>Международное комьюнити с необычными встречами вроде ужина на стройке аэропорта. Проверить форматы и названия ивентов.</p></div>
-    <div><h3>betahaus</h3><a href="https://www.instagram.com/betahaus/">@betahaus</a><p>Берлинский коворкинг. Проверить рубрики и тон подписей.</p></div>
-    <div><h3>OFFF Festival</h3><a href="https://www.instagram.com/offf/">@offf</a><p>Дизайн-фестиваль в Барселоне. Проверить, как каждый год меняют визуальную айдентику события. Может пригодиться для афиш.</p></div>
-  </div>
-  <p>Если хочешь, добавь и свои находки, оформлю так же.</p>
 </section>
 
 <section id="p3">
