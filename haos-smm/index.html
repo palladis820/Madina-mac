@@ -96,7 +96,11 @@ td:first-child{font-weight:600;white-space:nowrap}
 .cands div{border:1px dashed var(--line);border-radius:4px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;min-width:0}
 .cands a{font:500 13px/1 var(--mono)}
 .cands p{font-size:14.5px;color:var(--muted)}
-.refnote{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:16px;display:flex;flex-direction:column;gap:6px}
+.ref-profile{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:4px;overflow:hidden;text-decoration:none;color:var(--fg);background:var(--surface)}
+.ref-strip{display:block;height:120px;background:linear-gradient(90deg,#2B2F3A 0%,#5C4A6B 18%,#B5654A 36%,#D9A55B 52%,#9DB39A 70%,#3E7660 86%,#1F3B44 100%)}
+.ref-profile-text{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 16px;padding:14px 16px;font-size:14.5px;color:var(--muted)}
+.ref-profile-text b{font:500 13px/1.6 var(--mono);color:var(--accent)}
+.ref-profile:hover .ref-profile-text b{text-decoration:underline}
 .refs{display:flex;flex-direction:column;gap:24px}
 .ref{margin:0;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:24px;align-items:start}
 .ref img{width:100%;height:auto;display:block;border-radius:4px;border:1px solid var(--line)}
@@ -207,6 +211,18 @@ footer{font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:
         <div class="ref-tags"><span>Цвет</span><span>Обработка</span><span>Сетка ленты</span></div>
       </figcaption>
     </figure>
+    <figure class="ref ref-wide">
+      <a class="ref-profile" href="https://www.instagram.com/fotografiska/" aria-label="Открыть профиль Fotografiska в Instagram">
+        <span class="ref-strip" aria-hidden="true"></span>
+        <span class="ref-profile-text">Чтобы увидеть, как плавно меняется гамма, нужно пролистать профиль целиком <b>Смотреть профиль @fotografiska →</b></span>
+      </a>
+      <figcaption>
+        <span class="label">Референс 03 · <a href="https://www.instagram.com/fotografiska/">@fotografiska</a></span>
+        <h3>Гамма, которая меняется со временем</h3>
+        <p>Если пролистать их профиль, видно, что цветовая гамма со временем плавно меняется. Нам тоже стоит взять это на заметку. Вопрос только в том, какой период выбрать для смены гаммы: месяц или, например, сезон.</p>
+        <div class="ref-tags"><span>Цвет</span><span>Сетка ленты</span><span>Ритм</span></div>
+      </figcaption>
+    </figure>
   </div>
   <h3>Что ещё хочу охватить</h3>
   <div class="slots">
@@ -223,7 +239,6 @@ footer{font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:
     <div class="slot"><b>Еда и завтраки</b><span>Для рубрики «завтраки по средам»</span></div>
     <div class="slot"><b>AI-визуал</b><span>Если будешь генерировать (Midjourney и т. п.)</span></div>
   </div>
-  <div class="refnote"><span class="label">Наблюдение из профиля</span><h3>Fotografiska · <a href="https://www.instagram.com/fotografiska/">@fotografiska</a></h3><p>Если пролистать их профиль, видно, что цветовая гамма со временем меняется. Нам тоже стоит взять это на заметку. Вопрос только в том, какой период выбрать для смены гаммы: месяц или, например, сезон.</p></div>
   <h3>По чему комментировать каждый референс</h3>
   <div class="checklist">
     <span>Цвет и обработка</span><span>Свет</span><span>Композиция и кадрирование</span><span>Как поданы люди</span><span>Шрифт и текст на фото</span><span>Ритм в сетке</span><span>Что именно взять для Хаоса</span>
