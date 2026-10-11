@@ -1,0 +1,278 @@
+<title>Haos · тестовое SMM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: одна колонка-досье, разделы как вкладки папки; статус каждого пункта виден сразу */
+:root{
+  --bg:#EDEFEA; --surface:#F7F8F5; --fg:#151915; --muted:#5B635C; --line:#CDD3CB;
+  --accent:#1F4D3A; --accent-soft:#DCE7DF; --brass:#8A6A2C; --brass-soft:#EFE6D2;
+  --display:"Unbounded","Arial Black",system-ui,sans-serif;
+  --body:"Golos Text",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#111412; --surface:#181C19; --fg:#E7EBE6; --muted:#9AA39B; --line:#2C332E;
+  --accent:#7FC2A1; --accent-soft:#1D3127; --brass:#D2B36E; --brass-soft:#2E2817; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111412; --surface:#181C19; --fg:#E7EBE6; --muted:#9AA39B; --line:#2C332E;
+  --accent:#7FC2A1; --accent-soft:#1D3127; --brass:#D2B36E; --brass-soft:#2E2817; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:16px/1.6 var(--body);padding:40px 20px 80px}
+.wrap{max-width:920px;margin:0 auto;display:flex;flex-direction:column;gap:56px}
+h1,h2,h3{text-wrap:balance;margin:0}
+h1{font:600 clamp(30px,6vw,52px)/1.05 var(--display);letter-spacing:-.02em}
+h2{font:600 clamp(22px,3.6vw,30px)/1.15 var(--display);letter-spacing:-.01em}
+h3{font:600 18px/1.3 var(--body)}
+p{margin:0;max-width:68ch}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.label{font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.lead{font-size:18px;color:var(--muted)}
+header{display:flex;flex-direction:column;gap:18px}
+.status{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:8px}
+.status a{display:flex;flex-direction:column;gap:8px;padding:12px;border:1px solid var(--line);border-radius:4px;text-decoration:none;color:var(--fg);background:var(--surface);min-width:0}
+.status b{font:600 22px/1 var(--display)}
+.status span{font-size:13px;line-height:1.3}
+.pill{font:500 10.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:5px 7px;border-radius:99px;align-self:flex-start;white-space:nowrap}
+.p-work{background:var(--accent-soft);color:var(--accent)}
+.p-you{background:var(--brass-soft);color:var(--brass)}
+.p-later{background:transparent;color:var(--muted);border:1px solid var(--line)}
+.p-skip{background:transparent;color:var(--muted);text-decoration:line-through}
+section{display:flex;flex-direction:column;gap:20px;padding-top:28px;border-top:1px solid var(--line)}
+.sec-head{display:flex;gap:16px;align-items:baseline;flex-wrap:wrap}
+.num{font:600 15px/1 var(--mono);color:var(--brass)}
+.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.facts div{background:var(--surface);padding:14px 16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.facts p{font-size:15px}
+.principles{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.principles div{display:flex;flex-direction:column;gap:6px;min-width:0}
+.principles p{font-size:15px;color:var(--muted)}
+.principles h3{font-size:16px}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.slot{aspect-ratio:4/5;max-width:100%;border:1px dashed var(--line);border-radius:4px;padding:12px;display:flex;flex-direction:column;justify-content:space-between;background:repeating-linear-gradient(135deg,transparent 0 10px,var(--accent-soft) 10px 11px);min-width:0}
+.slot b{font:600 13px/1.3 var(--body)}
+.slot span{font-size:12.5px;color:var(--muted);line-height:1.35;background:var(--surface);padding:6px;border-radius:3px}
+.checklist{display:flex;flex-wrap:wrap;gap:8px}
+.checklist span{font-size:13.5px;padding:6px 10px;border:1px solid var(--line);border-radius:99px;background:var(--surface)}
+.queries{font:400 13.5px/1.7 var(--mono);background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:14px 16px;overflow-x:auto;margin:0;white-space:pre-wrap}
+.accounts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.acc{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:20px 0;border-bottom:1px solid var(--line)}
+.acc:first-child{padding-top:4px}
+.acc .n{font:600 20px/1.2 var(--display);color:var(--brass)}
+.acc-body{display:flex;flex-direction:column;gap:8px;min-width:0}
+.acc-top{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline}
+.acc-top a{font:500 13px/1 var(--mono)}
+.tag{font:500 10.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.acc p{font-size:15.5px}
+.acc .for{color:var(--accent);font-size:15px}
+.acc .for::before{content:"Для Хаоса → ";font-weight:600}
+.note{font-size:14px;color:var(--muted);border-left:2px solid var(--brass);padding-left:12px}
+.timeline{display:flex;flex-direction:column;border-left:2px solid var(--line);margin-left:6px}
+.tl{display:grid;grid-template-columns:110px 1fr;gap:12px;padding:10px 0 10px 18px;position:relative}
+.tl::before{content:"";position:absolute;left:-7px;top:16px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--muted)}
+.tl.key::before{background:var(--brass);border-color:var(--brass)}
+.tl time{font:500 13px/1.6 var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.tl p{font-size:15px}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:4px}
+table{border-collapse:collapse;width:100%;min-width:620px;font-size:14.5px}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:500 11px/1.2 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--surface)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:600;white-space:nowrap}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.cols div{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.cols p,.cols li{font-size:14.5px}
+.cols ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
+.loop{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:14.5px}
+.loop span{padding:8px 12px;background:var(--accent-soft);color:var(--accent);border-radius:4px;font-weight:500}
+.loop i{font-style:normal;color:var(--muted)}
+footer{font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:6px}
+@media (max-width:760px){
+  .status{grid-template-columns:repeat(2,1fr)}
+  .principles,.cols{grid-template-columns:1fr}
+  .slots{grid-template-columns:repeat(2,1fr)}
+  .facts{grid-template-columns:1fr}
+  .tl{grid-template-columns:1fr;gap:2px}
+  .acc{grid-template-columns:32px 1fr;gap:10px}
+}
+</style>
+
+<div class="wrap">
+<header>
+  <span class="label">HAOS · Белград · тестовое задание SMM</span>
+  <h1>Хаос: визуал, референсы, аналитика</h1>
+  <p class="lead">Рабочая папка по тестовому. Каждый пункт разложен отдельно; статус у каждого виден сверху. Страница будет обновляться по мере того, как появляются материалы.</p>
+  <nav class="status" aria-label="Статус пунктов">
+    <a href="#p1"><b>1</b><span>Визуальное видение</span><em class="pill p-you">материал от тебя</em></a>
+    <a href="#p2"><b>2</b><span>Топ-10 аккаунтов</span><em class="pill p-work">черновик готов</em></a>
+    <a href="#p3"><b>3</b><span>Контент-план</span><em class="pill p-later">позже</em></a>
+    <a href="#p4"><b>4</b><span>Создание контента</span><em class="pill p-skip">пропускаем</em></a>
+    <a href="#p5"><b>5</b><span>Аналитика</span><em class="pill p-work">набросок</em></a>
+  </nav>
+</header>
+
+<section id="context">
+  <div class="sec-head"><span class="num">00</span><h2>С чем работаем</h2></div>
+  <div class="facts">
+    <div><span class="label">Формат</span><p>Коворкинг по приглашению для tech, стартап и креативной индустрии. В открытых источниках называется первым invite-only коворкингом в Сербии.</p></div>
+    <div><span class="label">Место</span><p>Центр Белграда, Теразие, рядом с отелем «Москва». Окна на парк Теразийская терраса.</p></div>
+    <div><span class="label">Пространство</span><p>Лаунж, открытые рабочие зоны, две переговорные, кофейня на ресепшене.</p></div>
+    <div><span class="label">Позиционирование из брифа</span><p>Сначала комьюнити, потом рабочее место. Эксклюзивность без пафоса, luxury без высокомерия.</p></div>
+  </div>
+  <p class="note">Сайт и инстаграм Хаоса из моей среды не открываются, поэтому факты выше взяты из открытых каталогов и архитектурных публикаций. Если пришлёшь скриншоты сайта и ленты, добавлю раздел «как сейчас» и сравнение «как могло бы быть».</p>
+  <h3>Что позиционирование значит для визуала (гипотеза)</h3>
+  <div class="principles">
+    <div><h3>Люди, а не интерьер</h3><p>Комьюнити продаётся лицами и разговорами. Живые кадры, не постановочные улыбки в камеру.</p></div>
+    <div><h3>Тихая роскошь</h3><p>Свет, фактуры, детали: чашка, книга, вид на парк. Без золота, неона и слова «премиум».</p></div>
+    <div><h3>Немного хаоса</h3><p>Название даёт право на дерзость: смелая типографика, кадры «вне сетки», юмор в подписях.</p></div>
+  </div>
+</section>
+
+<section id="p1">
+  <div class="sec-head"><span class="num">01</span><h2>Визуальное видение страницы</h2><em class="pill p-you">материал от тебя</em></div>
+  <p>Нужно 8–12 референсов с коротким комментарием по сути: цвет, композиция, свет, подача людей. Ты собираешь и присылаешь картинки с парой слов, я оформляю сюда. Ниже сетка-заготовка, чтобы подборка покрыла разные стороны ленты, а не десять похожих интерьеров.</p>
+  <div class="slots">
+    <div class="slot"><b>Портрет резидента</b><span>Как снимать людей: крупно, в работе, естественный свет</span></div>
+    <div class="slot"><b>Деталь пространства</b><span>Фактура, предмет, свет из окна</span></div>
+    <div class="slot"><b>Ивент / толпа</b><span>Атмосфера вечера, спикер, зал</span></div>
+    <div class="slot"><b>Анонс-обложка</b><span>Типографика для афиши ивента</span></div>
+    <div class="slot"><b>Цветовая гамма</b><span>2–3 цвета, которые станут кодом ленты</span></div>
+    <div class="slot"><b>Сетка профиля</b><span>Как лента выглядит целиком, ритм</span></div>
+    <div class="slot"><b>Город / Белград</b><span>Теразие, парк, вид из окна</span></div>
+    <div class="slot"><b>Юмор / хаос</b><span>Мем, коллаж, неожиданный кадр</span></div>
+    <div class="slot"><b>Карусель</b><span>Пример хорошей текстовой карусели</span></div>
+    <div class="slot"><b>Обложка Reels</b><span>Единый стиль превью</span></div>
+    <div class="slot"><b>Еда и завтраки</b><span>Для рубрики «завтраки по средам»</span></div>
+    <div class="slot"><b>AI-визуал</b><span>Если будешь генерировать (Midjourney и т. п.)</span></div>
+  </div>
+  <h3>По чему комментировать каждый референс</h3>
+  <div class="checklist">
+    <span>Цвет и обработка</span><span>Свет</span><span>Композиция и кадрирование</span><span>Как поданы люди</span><span>Шрифт и текст на фото</span><span>Ритм в сетке</span><span>Что именно взять для Хаоса</span>
+  </div>
+  <h3>Запросы для Pinterest</h3>
+  <pre class="queries">members club interior editorial · quiet luxury office photography
+candid coworking portraits film · creative studio instagram grid
+event poster minimal typography · brutalist type poster
+coworking breakfast aesthetic · belgrade architecture film photo
+neutral feed instagram grid · editorial carousel design</pre>
+</section>
+
+<section id="p2">
+  <div class="sec-head"><span class="num">02</span><h2>Топ-10 аккаунтов для вдохновения</h2><em class="pill p-work">черновик готов</em></div>
+  <p>Смешал клубы, коворкинги, стартап-кампусы и арт-пространства: у них разные сильные стороны, и каждая закрывает свою задачу Хаоса.</p>
+  <ol class="accounts">
+    <li class="acc"><span class="n">1</span><div class="acc-body">
+      <div class="acc-top"><h3>Soho House</h3><a href="https://www.instagram.com/sohohouse/">@sohohouse</a><span class="tag">клуб · Лондон и мир</span></div>
+      <p>Главный ориентир по тону «эксклюзивно, но тепло». Люди в кадре выглядят как друзья, а не как модели; много плёночной обработки и тёплого света.</p>
+      <p class="for">Подача резидентов как героев. Рубрика «кто у нас работает» с портретом и одной цитатой.</p>
+    </div></li>
+    <li class="acc"><span class="n">2</span><div class="acc-body">
+      <div class="acc-top"><h3>NeueHouse</h3><a href="https://www.instagram.com/neuehouse/">@neuehouse</a><span class="tag">креативный клуб · Нью-Йорк</span></div>
+      <p>Культурная программа как основа контента: разговоры, показы, лекции. Строгая типографика, чёрно-белые портреты спикеров.</p>
+      <p class="for">Шаблон анонса ивента с портретом спикера. Прямо подходит для кампании Юры Соколова.</p>
+    </div></li>
+    <li class="acc"><span class="n">3</span><div class="acc-body">
+      <div class="acc-top"><h3>Second Home</h3><a href="https://www.instagram.com/secondhomeio/">@secondhomeio</a><span class="tag">коворкинг · Лиссабон, Лондон</span></div>
+      <p>Пространство как персонаж: растения, цвет, необычная архитектура. Интерьер снят так, что хочется туда прийти.</p>
+      <p class="for">Серия «уголки Хаоса» и вид на Теразийский парк как фирменный кадр.</p>
+    </div></li>
+    <li class="acc"><span class="n">4</span><div class="acc-body">
+      <div class="acc-top"><h3>Factory Berlin</h3><a href="https://www.instagram.com/factoryberlin/">@factoryberlin</a><span class="tag">tech-комьюнити · Берлин</span></div>
+      <p>Отбор участников по ценностям, а не по индустрии, и смесь фаундеров с музыкантами и художниками. Это видно в ленте.</p>
+      <p class="for">Сторителлинг про отбор: почему к нам по приглашению и что значит «не только берут, но и отдают».</p>
+    </div></li>
+    <li class="acc"><span class="n">5</span><div class="acc-body">
+      <div class="acc-top"><h3>Station F</h3><a href="https://www.instagram.com/joinstationf/">@joinstationf</a><span class="tag">стартап-кампус · Париж</span></div>
+      <p>Чёткие шаблоны для историй фаундеров и программ. Узнаваемо с первого кадра, даже если контент делают разные люди.</p>
+      <p class="for">Единые шаблоны каруселей «история стартапа резидента» в 5–7 слайдов.</p>
+    </div></li>
+    <li class="acc"><span class="n">6</span><div class="acc-body">
+      <div class="acc-top"><h3>Slush</h3><a href="https://www.instagram.com/slushhq/">@slushhq</a><span class="tag">стартап-конференция · Хельсинки</span></div>
+      <p>Лучший пример разогрева события: отсчёт, анонс спикеров по одному, громкая типографика, самоирония.</p>
+      <p class="for">Механика трёхнедельной кампании перед 21.10: отсчёт в сторис, тизеры, вопросы спикеру от подписчиков.</p>
+    </div></li>
+    <li class="acc"><span class="n">7</span><div class="acc-body">
+      <div class="acc-top"><h3>Fotografiska</h3><a href="https://www.instagram.com/fotografiska/">@fotografiska</a><span class="tag">арт-пространство · Стокгольм и мир</span></div>
+      <p>Музей, который живёт как место встреч: вечерние кадры, люди с бокалом у работ, тёмная атмосферная обработка.</p>
+      <p class="for">Вечерняя версия Хаоса: как снимать нетворкинг и Хэллоуин так, чтобы было атмосферно, а не «корпоратив».</p>
+    </div></li>
+    <li class="acc"><span class="n">8</span><div class="acc-body">
+      <div class="acc-top"><h3>Ace Hotel</h3><a href="https://www.instagram.com/acehotel/">@acehotel</a><span class="tag">отель-комьюнити · США</span></div>
+      <p>Лобби как общая гостиная для креативных людей. Тёплая аналоговая эстетика и коллаборации с местными мастерами.</p>
+      <p class="for">Коллаборации с белградскими брендами: кофе, керамика, музыка. Завтраки по средам как повод их показать.</p>
+    </div></li>
+    <li class="acc"><span class="n">9</span><div class="acc-body">
+      <div class="acc-top"><h3>Mindspace</h3><a href="https://www.instagram.com/mindspace/">@mindspace</a><span class="tag">коворкинг · Европа, Израиль</span></div>
+      <p>Коворкинг с подачей бутик-отеля: детали интерьера, сервис, дизайн. Хорошо показывает «дорого» без крика.</p>
+      <p class="for">Съёмка сервиса и мелочей: как варят кофе, как встречают гостя. Это и есть luxury без высокомерия.</p>
+    </div></li>
+    <li class="acc"><span class="n">10</span><div class="acc-body">
+      <div class="acc-top"><h3>Nova Iskra</h3><a href="https://www.instagram.com/novaiskra/">@novaiskra</a><span class="tag">креативный хаб · Белград</span></div>
+      <p>Первый коворкинг Сербии, вырос из дизайн-инкубатора. Важен как локальный контекст: что уже видит белградская аудитория.</p>
+      <p class="for">Понять, чем отличаться от локальных игроков. Хаос может занять нишу международного комьюнити в центре города.</p>
+    </div></li>
+  </ol>
+  <p class="note">Перед сдачей проверь, что каждый хэндл открывается и аккаунт живой: у NeueHouse в 2025 был перезапуск под новым владельцем. Если какой-то не понравится визуально, скажи, подберу замену.</p>
+  <h3>Запасные, если захочешь заменить</h3>
+  <div class="checklist">
+    <span>Startit, Белград</span><span>Betaworks, Нью-Йорк</span><span>betahaus, Берлин</span><span>Kinfolk (журнал, для эстетики)</span><span>Garage, Москва (арт)</span>
+  </div>
+</section>
+
+<section id="p3">
+  <div class="sec-head"><span class="num">03</span><h2>Контент-план на октябрь</h2><em class="pill p-later">позже</em></div>
+  <p>Пока только ключевые даты, чтобы видеть каркас. Формат по брифу: 2–3 поста в неделю, сторис через день.</p>
+  <div class="timeline">
+    <div class="tl key"><time>~30.09</time><p>Старт кампании Юры Соколова: за три недели до ивента</p></div>
+    <div class="tl"><time>1–5.10</time><p>Украшаем к Хэллоуину</p></div>
+    <div class="tl"><time>каждая среда</time><p>Завтраки для резидентов</p></div>
+    <div class="tl key"><time>21.10</time><p>Юра Соколов: «Как бутстрапить бизнес от 1 до 10 млрд»</p></div>
+    <div class="tl"><time>30–31.10</time><p>Хэллоуин</p></div>
+  </div>
+</section>
+
+<section id="p4">
+  <div class="sec-head"><span class="num">04</span><h2>Создание контента</h2><em class="pill p-skip">пропускаем</em></div>
+  <p class="lead">Этот пункт не делаем.</p>
+</section>
+
+<section id="p5">
+  <div class="sec-head"><span class="num">05</span><h2>Подход к аналитике</h2><em class="pill p-work">набросок</em></div>
+  <p>Идея простая: у каждой публикации есть цель, и мы смотрим метрику именно этой цели. Охват сам по себе ничего не говорит, если пост должен был привести заявки на ивент.</p>
+
+  <h3>Что смотреть после публикации</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Цель поста</th><th>Главная метрика</th><th>Дополнительно</th><th>Где смотреть</th></tr></thead>
+    <tbody>
+      <tr><td>Узнаваемость</td><td>Охват неподписчиков</td><td>Репосты, досмотры Reels, удержание первых 3 секунд</td><td>Instagram Insights</td></tr>
+      <tr><td>Ценность</td><td>Сохранения</td><td>Сохранения на 1000 охвата, время досмотра карусели</td><td>Insights</td></tr>
+      <tr><td>Комьюнити</td><td>Комментарии и ответы в сторис</td><td>Отметки Хаоса резидентами, сообщения в директ</td><td>Insights, директ</td></tr>
+      <tr><td>Ивенты</td><td>Регистрации</td><td>Клики по ссылке, переходы с UTM, стикер «ссылка» в сторис</td><td>Форма регистрации, UTM</td></tr>
+      <tr><td>Продажи мест</td><td>Заявки на вступление</td><td>Визиты профиля, клики на сайт</td><td>CRM или таблица заявок</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">Абсолютные цифры сравнивать нечестно, если охват разный. Поэтому считаем доли: сохранения, репосты и комментарии на 1000 охвата (ER по охвату).</p>
+
+  <h3>Ритм</h3>
+  <div class="cols">
+    <div><span class="label">Через 48 часов и 7 дней</span><p>Заносим цифры поста в общую таблицу. Сторис смотрим через 24 часа: досмотр от первой к последней, выходы, ответы.</p></div>
+    <div><span class="label">Раз в неделю</span><p>15 минут: топ-3 и худшие 3 публикации недели, одна гипотеза почему.</p></div>
+    <div><span class="label">Раз в месяц</span><p>Итог по рубрикам и форматам, рост подписчиков, заявки и регистрации. Выводы идут в план следующего месяца.</p></div>
+  </div>
+
+  <h3>Как аналитика меняет следующий план</h3>
+  <div class="loop"><span>Публикуем</span><i>→</i><span>Меряем по цели</span><i>→</i><span>Сравниваем рубрики</span><i>→</i><span>Решаем: усилить, изменить, убрать</span><i>→</i><span>Тестируем одну новую идею</span></div>
+  <div class="cols">
+    <div><span class="label">Усилить</span><p>Рубрика стабильно выше среднего по своей цели: даём ей больше слотов.</p></div>
+    <div><span class="label">Изменить</span><p>Тема работает, а формат нет: пробуем ту же тему каруселью вместо фото или Reels вместо карусели.</p></div>
+    <div><span class="label">Убрать</span><p>Два-три месяца ниже среднего: освобождаем слот под тест новой идеи.</p></div>
+  </div>
+  <p class="note">Для ивентов отдельная воронка: охват анонса → клики → регистрации → пришли. После 21.10 сравним, какие касания дали больше регистраций, и используем это для следующих ивентов.</p>
+</section>
+
+<footer>
+  <span class="label">Источники по Хаосу</span>
+  <span><a href="https://officesnapshots.com/2023/01/12/haos-coworking-offices-belgrade/">Office Snapshots</a> · <a href="https://startupblink.com/coworking-space/haos-community-space">StartupBlink</a> · <a href="https://www.coworker.com/serbia/belgrade/haos-community-space-terazije">Coworker</a></span>
+</footer>
+</div>
