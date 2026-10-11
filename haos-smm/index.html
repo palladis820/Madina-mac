@@ -90,6 +90,11 @@ td:first-child{font-weight:600;white-space:nowrap}
 .swatches i{display:block;aspect-ratio:1;max-width:100%;border-radius:50%;border:1px solid var(--line)}
 .swatches b{font-size:13.5px}
 .swatches span{font-size:12.5px;color:var(--muted);line-height:1.35}
+.cands{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.cands div{border:1px dashed var(--line);border-radius:4px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.cands a{font:500 13px/1 var(--mono)}
+.cands p{font-size:14.5px;color:var(--muted)}
+.refnote{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:16px;display:flex;flex-direction:column;gap:6px}
 .loop{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:14.5px}
 .loop span{padding:8px 12px;background:var(--accent-soft);color:var(--accent);border-radius:4px;font-weight:500}
 .loop i{font-style:normal;color:var(--muted)}
@@ -100,6 +105,7 @@ footer{font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:
   .slots{grid-template-columns:repeat(2,1fr)}
   .swatches{grid-template-columns:repeat(3,1fr)}
   .cols.cols-2{grid-template-columns:1fr}
+  .cands{grid-template-columns:1fr}
   .facts{grid-template-columns:1fr}
   .tl{grid-template-columns:1fr;gap:2px}
   .acc{grid-template-columns:32px 1fr;gap:10px}
@@ -113,7 +119,7 @@ footer{font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:
   <p class="lead">Рабочая папка по тестовому. Каждый пункт разложен отдельно; статус у каждого виден сверху. Страница будет обновляться по мере того, как появляются материалы.</p>
   <nav class="status" aria-label="Статус пунктов">
     <a href="#p1"><b>1</b><span>Визуальное видение</span><em class="pill p-you">материал от тебя</em></a>
-    <a href="#p2"><b>2</b><span>Топ-10 аккаунтов</span><em class="pill p-work">черновик готов</em></a>
+    <a href="#p2"><b>2</b><span>Топ-10 аккаунтов</span><em class="pill p-you">4 из 10</em></a>
     <a href="#p3"><b>3</b><span>Контент-план</span><em class="pill p-later">позже</em></a>
     <a href="#p4"><b>4</b><span>Создание контента</span><em class="pill p-skip">пропускаем</em></a>
     <a href="#p5"><b>5</b><span>Аналитика</span><em class="pill p-work">набросок</em></a>
@@ -156,9 +162,9 @@ footer{font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:
       <li>Интерьеры очень фотогеничные: мурал с ромбами и неон «Ja sam u Haosu» в Artklasa, вид на парк и честерфилд на Теразие</li>
       <li>Хайлайты в цветах бренда, понятная навигация по услугам</li>
       <li>Рубрика завтраков уже есть, её легко развивать</li>
+      <li>Есть рубрика про резидентов в формате Reels</li>
     </ul></div>
     <div><span class="label">Где можно лучше</span><ul>
-      <li>В ленте мало людей: в основном графика и интерьеры, а Хаос продаёт комьюнити</li>
       <li>Афиши ивентов в чужом стиле (фиолетовый воркшоп с 3D) выбиваются из палитры</li>
       <li>Нет одного шаблона анонсов и обложек Reels, поэтому сетка выглядит пёстро</li>
       <li>Безымянный фиолетовый хайлайт ломает систему цветов</li>
@@ -184,6 +190,7 @@ footer{font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:
     <div class="slot"><b>Еда и завтраки</b><span>Для рубрики «завтраки по средам»</span></div>
     <div class="slot"><b>AI-визуал</b><span>Если будешь генерировать (Midjourney и т. п.)</span></div>
   </div>
+  <div class="refnote"><span class="label">Наблюдение из профиля</span><h3>Fotografiska · <a href="https://www.instagram.com/fotografiska/">@fotografiska</a></h3><p>Цветовая гамма ленты меняется со временем. Хаосу можно взять это на заметку: менять акцентный цвет по периодам. Вопрос, какой выбрать период: месяц или сезон.</p></div>
   <h3>По чему комментировать каждый референс</h3>
   <div class="checklist">
     <span>Цвет и обработка</span><span>Свет</span><span>Композиция и кадрирование</span><span>Как поданы люди</span><span>Шрифт и текст на фото</span><span>Ритм в сетке</span><span>Что именно взять для Хаоса</span>
@@ -197,65 +204,42 @@ neutral feed instagram grid · editorial carousel design</pre>
 </section>
 
 <section id="p2">
-  <div class="sec-head"><span class="num">02</span><h2>Топ-10 аккаунтов для вдохновения</h2><em class="pill p-work">черновик готов</em></div>
-  <p>Смешал клубы, коворкинги, стартап-кампусы и арт-пространства: у них разные сильные стороны, и каждая закрывает свою задачу Хаоса.</p>
+  <div class="sec-head"><span class="num">02</span><h2>Топ-10 аккаунтов для вдохновения</h2><em class="pill p-you">4 из 10 отобраны</em></div>
+  <p>Ищем аккаунты, на которые Хаос ещё не подписан, и берём у них новые идеи, а не то, что у нас уже есть. Комментарии к отобранным написаны по твоему разбору профилей.</p>
   <ol class="accounts">
     <li class="acc"><span class="n">1</span><div class="acc-body">
-      <div class="acc-top"><h3>Soho House</h3><a href="https://www.instagram.com/sohohouse/">@sohohouse</a><span class="tag">клуб · Лондон и мир</span></div>
-      <p>Главный ориентир по тону «эксклюзивно, но тепло». Люди в кадре выглядят как друзья, а не как модели; много плёночной обработки и тёплого света.</p>
-      <p class="for">Подача резидентов как героев. Рубрика «кто у нас работает» с портретом и одной цитатой.</p>
+      <div class="acc-top"><h3>Factory Berlin</h3><a href="https://www.instagram.com/factoryberlin/">@factoryberlin</a><span class="tag">tech-комьюнити · Берлин</span></div>
+      <p>Анонсы мероприятий делают не на однотонном фоне, а с картинкой. Такой анонс гораздо сильнее цепляет глаз в ленте.</p>
+      <p class="for">Уходим от плашек с текстом на ровном фоне: в основе анонса фото или иллюстрация, текст поверх.</p>
     </div></li>
     <li class="acc"><span class="n">2</span><div class="acc-body">
-      <div class="acc-top"><h3>NeueHouse</h3><a href="https://www.instagram.com/neuehouse/">@neuehouse</a><span class="tag">креативный клуб · Нью-Йорк</span></div>
-      <p>Культурная программа как основа контента: разговоры, показы, лекции. Строгая типографика, чёрно-белые портреты спикеров.</p>
-      <p class="for">Шаблон анонса ивента с портретом спикера. Прямо подходит для кампании Юры Соколова.</p>
+      <div class="acc-top"><h3>Station F</h3><a href="https://www.instagram.com/joinstationf/">@joinstationf</a><span class="tag">стартап-кампус · Париж</span></div>
+      <p>Публикуют календарь событий отдельным постом.</p>
+      <p class="for">Сетка ивентов в отдельной вкладке актуального. Она сразу показывает, что у нас идёт жизнь, то есть комьюнити. Второй вариант: календарь постом, чтобы история всех ивентов оставалась в ленте профиля и не перегружала актуальные.</p>
     </div></li>
     <li class="acc"><span class="n">3</span><div class="acc-body">
-      <div class="acc-top"><h3>Second Home</h3><a href="https://www.instagram.com/secondhomeio/">@secondhomeio</a><span class="tag">коворкинг · Лиссабон, Лондон</span></div>
-      <p>Пространство как персонаж: растения, цвет, необычная архитектура. Интерьер снят так, что хочется туда прийти.</p>
-      <p class="for">Серия «уголки Хаоса» и вид на Теразийский парк как фирменный кадр.</p>
+      <div class="acc-top"><h3>Slush</h3><a href="https://www.instagram.com/slushhq/">@slushhq</a><span class="tag">стартап-конференция · Хельсинки</span></div>
+      <p>Вкладка актуального с BTS: закулисье и живые кадры с событий.</p>
+      <p class="for">Своя BTS-вкладка, куда собираем всё, что наснимали мы и участники. Сейчас посты об ивентах есть, а пересмотреть прошедшее негде. Текущие «Events» в основном про наши вечеринки, их можно расширить на еженедельные события.</p>
     </div></li>
     <li class="acc"><span class="n">4</span><div class="acc-body">
-      <div class="acc-top"><h3>Factory Berlin</h3><a href="https://www.instagram.com/factoryberlin/">@factoryberlin</a><span class="tag">tech-комьюнити · Берлин</span></div>
-      <p>Отбор участников по ценностям, а не по индустрии, и смесь фаундеров с музыкантами и художниками. Это видно в ленте.</p>
-      <p class="for">Сторителлинг про отбор: почему к нам по приглашению и что значит «не только берут, но и отдают».</p>
-    </div></li>
-    <li class="acc"><span class="n">5</span><div class="acc-body">
-      <div class="acc-top"><h3>Station F</h3><a href="https://www.instagram.com/joinstationf/">@joinstationf</a><span class="tag">стартап-кампус · Париж</span></div>
-      <p>Чёткие шаблоны для историй фаундеров и программ. Узнаваемо с первого кадра, даже если контент делают разные люди.</p>
-      <p class="for">Единые шаблоны каруселей «история стартапа резидента» в 5–7 слайдов.</p>
-    </div></li>
-    <li class="acc"><span class="n">6</span><div class="acc-body">
-      <div class="acc-top"><h3>Slush</h3><a href="https://www.instagram.com/slushhq/">@slushhq</a><span class="tag">стартап-конференция · Хельсинки</span></div>
-      <p>Лучший пример разогрева события: отсчёт, анонс спикеров по одному, громкая типографика, самоирония.</p>
-      <p class="for">Механика трёхнедельной кампании перед 21.10: отсчёт в сторис, тизеры, вопросы спикеру от подписчиков.</p>
-    </div></li>
-    <li class="acc"><span class="n">7</span><div class="acc-body">
-      <div class="acc-top"><h3>Fotografiska</h3><a href="https://www.instagram.com/fotografiska/">@fotografiska</a><span class="tag">арт-пространство · Стокгольм и мир</span></div>
-      <p>Музей, который живёт как место встреч: вечерние кадры, люди с бокалом у работ, тёмная атмосферная обработка.</p>
-      <p class="for">Вечерняя версия Хаоса: как снимать нетворкинг и Хэллоуин так, чтобы было атмосферно, а не «корпоратив».</p>
-    </div></li>
-    <li class="acc"><span class="n">8</span><div class="acc-body">
       <div class="acc-top"><h3>Ace Hotel</h3><a href="https://www.instagram.com/acehotel/">@acehotel</a><span class="tag">отель-комьюнити · США</span></div>
-      <p>Лобби как общая гостиная для креативных людей. Тёплая аналоговая эстетика и коллаборации с местными мастерами.</p>
-      <p class="for">Коллаборации с белградскими брендами: кофе, керамика, музыка. Завтраки по средам как повод их показать.</p>
-    </div></li>
-    <li class="acc"><span class="n">9</span><div class="acc-body">
-      <div class="acc-top"><h3>Mindspace</h3><a href="https://www.instagram.com/mindspace/">@mindspace</a><span class="tag">коворкинг · Европа, Израиль</span></div>
-      <p>Коворкинг с подачей бутик-отеля: детали интерьера, сервис, дизайн. Хорошо показывает «дорого» без крика.</p>
-      <p class="for">Съёмка сервиса и мелочей: как варят кофе, как встречают гостя. Это и есть luxury без высокомерия.</p>
-    </div></li>
-    <li class="acc"><span class="n">10</span><div class="acc-body">
-      <div class="acc-top"><h3>Nova Iskra</h3><a href="https://www.instagram.com/novaiskra/">@novaiskra</a><span class="tag">креативный хаб · Белград</span></div>
-      <p>Первый коворкинг Сербии, вырос из дизайн-инкубатора. Важен как локальный контекст: что уже видит белградская аудитория.</p>
-      <p class="for">Понять, чем отличаться от локальных игроков. Хаос может занять нишу международного комьюнити в центре города.</p>
+      <p>Закреплённый пост: гайд по городу.</p>
+      <p class="for">Гайд по Белграду. Иностранных резидентов и гостей города всё больше, и они часто спрашивают у тебя и администраторов, что посмотреть и где поесть. Грань между рекомендацией и рекламой тонкая, поэтому рубрику логичнее вести в Telegram-канале.</p>
     </div></li>
   </ol>
-  <p class="note">Перед сдачей проверь, что каждый хэндл открывается и аккаунт живой: у NeueHouse в 2025 был перезапуск под новым владельцем. Если какой-то не понравится визуально, скажи, подберу замену.</p>
-  <h3>Запасные, если захочешь заменить</h3>
-  <div class="checklist">
-    <span>Startit, Белград</span><span>Betaworks, Нью-Йорк</span><span>betahaus, Берлин</span><span>Kinfolk (журнал, для эстетики)</span><span>Garage, Москва (арт)</span>
+
+  <h3>Кандидаты на оставшиеся 6 мест</h3>
+  <p class="note">Эти профили я открыть не могу, поэтому здесь не выводы, а наводки: что в них проверить. Что не подойдёт или уже есть в подписках Хаоса, вычёркиваем.</p>
+  <div class="cands">
+    <div><h3>CreativeMornings</h3><a href="https://www.instagram.com/creativemornings/">@creativemornings</a><p>Бесплатные утренние лекции за завтраком в 200+ городах, у каждого месяца общая тема. Проверить, как они оформляют тему месяца и спикера. Возможная связка с нашими завтраками по средам.</p></div>
+    <div><h3>Fabrika Tbilisi</h3><a href="https://www.instagram.com/fabrikatbilisi/">@fabrikatbilisi</a><p>Бывшая швейная фабрика: хостел, коворкинг, бары, стрит-арт и маркет во дворе. Похожая аудитория из релокантов и гостей города. Проверить, как они показывают людей и двор.</p></div>
+    <div><h3>The Trampery</h3><a href="https://www.instagram.com/thetrampery/">@thetrampery</a><p>Сеть творческих кампусов в Лондоне. Проверить, как разводят разные локации в одной ленте: у Хаоса их две.</p></div>
+    <div><h3>House of Beautiful Business</h3><a href="https://www.instagram.com/houseofbeautifulbusiness/">@houseofbeautifulbusiness</a><p>Международное комьюнити с необычными встречами вроде ужина на стройке аэропорта. Проверить форматы и названия ивентов.</p></div>
+    <div><h3>betahaus</h3><a href="https://www.instagram.com/betahaus/">@betahaus</a><p>Берлинский коворкинг. Проверить рубрики и тон подписей.</p></div>
+    <div><h3>OFFF Festival</h3><a href="https://www.instagram.com/offf/">@offf</a><p>Дизайн-фестиваль в Барселоне. Проверить, как каждый год меняют визуальную айдентику события. Может пригодиться для афиш.</p></div>
   </div>
+  <p>Если хочешь, добавь и свои находки, оформлю так же.</p>
 </section>
 
 <section id="p3">
